@@ -1,6 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {addTodoAction} from '../../action'
+import { connect } from 'react-redux'
+import { addTodoAction } from '../../action'
 
 class Input extends React.Component {
 

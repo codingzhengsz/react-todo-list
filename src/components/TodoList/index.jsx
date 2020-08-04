@@ -1,16 +1,21 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import TodoItem from '../TotoItem';
-import {deleteTodoAction} from '../../action'
+import { deleteTodoAction, markTodoAction } from '../../action'
 
 class TodoList extends React.Component {
 
     render() {
-        const initArray = [...Array(this.props.todos.length).keys()];
         return (
             <div>
                 {
-                    initArray.map(key => <TodoItem key={key} id={key} deleteTodoAction={this.props.deleteTodoAction} value={this.props.todos[key]}/>)
+                    this.props.todos.map((item, index) => <TodoItem
+                        key={index}
+                        id={index}
+                        deleteTodoAction={this.props.deleteTodoAction}
+                        markTodoAction={this.props.markTodoAction}
+                        value={item}
+                        item={item} />)
                 }
             </div>
         )
@@ -22,7 +27,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    deleteTodoAction
-  }
+    deleteTodoAction,
+    markTodoAction
+}
 
-export default connect(mapStateToProps,mapDispatchToProps)(TodoList)
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

@@ -5,7 +5,10 @@ export const addTodoAction = createAction(types.ADD_TODO, (todoItem) => ({
     payload: todoItem
 }))
 
-
 export const deleteTodoAction = createAction(types.DELETE_TODO, (index) => ({
+    payload: index
+}))
+
+export const markTodoAction = createAction(types.MARK_TODO, (index) => ({
     payload: index
 }))
