@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
-import Input from './components/Input'
-import TodoList from './components/TodoList'
+import TodoPage from './components/TodoPage'
+import { HashRouter } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Input />
-        <TodoList/>
-      </header>
+      <HashRouter>
+        <Route exact path="/" component={TodoPage} />
+      </HashRouter>
     </div>
   );
 }
