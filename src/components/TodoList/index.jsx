@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import TodoItem from '../TotoItem';
+import TodoItem from '../TodoItem';
 import { deleteTodoAction, markTodoAction } from '../../action'
 
 class TodoList extends React.Component {

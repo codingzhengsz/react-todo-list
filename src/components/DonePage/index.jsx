@@ -1,12 +1,15 @@
 import React from 'react'
-import TodoItem from '../TotoItem'
+import TodoItem from '../TodoItem'
 import { connect } from 'react-redux'
 import { deleteTodoAction, markTodoAction } from '../../action'
+import Menu from '../Menu'
+
 
 class DonePage extends React.Component {
     render() {
         return (
             <div>
+                <Menu />
                 <h1>Finished Todo</h1>
                 {
                     this.props.todos.map((item, index) => {
