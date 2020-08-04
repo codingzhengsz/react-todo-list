@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import TodoItem from '../TotoItem';
+import {deleteTodoAction} from '../../action'
 
 class TodoList extends React.Component {
 
@@ -20,4 +21,8 @@ const mapStateToProps = (state) => ({
     todos: state.todos
 })
 
-export default connect(mapStateToProps)(TodoList)
+const mapDispatchToProps = {
+    deleteTodoAction
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(TodoList)
