@@ -14,7 +14,7 @@ class TodoItem extends React.Component {
         return (
             <div>
                 <span style={{textDecorationLine: this.props.item.mark ? "line-through" : "none"}} 
-                    onClick={this.onMark}>{this.props.value.todoItem}</span>
+                    onClick={this.onMark}>{this.props.item.todoItem}</span>
                 <button onClick={this.onDelete}>X</button>
             </div>
         )
