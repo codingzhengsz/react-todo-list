@@ -1,9 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import TodoItem from '../TodoItem';
-import { deleteTodoAction, markTodoAction } from '../../action'
+import { deleteTodoAction, markTodoAction,addTodoAction } from '../../action'
+import {todoList} from '../../api'
 
 class TodoList extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {todos: []}
+    }
+
+    componentWillMount() {
+        todoList().then(response => {
+            for (let todo of response.data) {
+                this.props.addTodoAction(todo)
+            }
+        })
+    }
 
     render() {
         return (
@@ -28,7 +41,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     deleteTodoAction,
-    markTodoAction
+    markTodoAction,
+    addTodoAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

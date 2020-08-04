@@ -13,8 +13,8 @@ class TodoItem extends React.Component {
     render() {
         return (
             <div>
-                <span style={{textDecorationLine: this.props.item.mark ? "line-through" : "none"}} 
-                    onClick={this.onMark}>{this.props.item.todoItem}</span>
+                <span style={{textDecorationLine: this.props.item.status ? "line-through" : "none"}} 
+                    onClick={this.onMark}>{this.props.item.content}</span>
                 <button onClick={this.onDelete}>X</button>
             </div>
         )

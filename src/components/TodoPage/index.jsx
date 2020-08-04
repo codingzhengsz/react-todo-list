@@ -3,7 +3,6 @@ import Input from '../Input'
 import TodoList from '../TodoList'
 import Menu from '../Menu'
 
-
 class TodoPage extends React.Component{
 
     render(){

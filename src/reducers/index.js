@@ -14,8 +14,9 @@ let initialState = {
 export default createReducer(initialState, {
     [ADD_TODO]: (state, action) => ({
         todos: state.todos.concat({
-            todoItem: action.payload,
-            mark: false
+            id: action.payload.id,
+            content: action.payload.content,
+            status: action.payload.status
         })
     }),
     [DELETE_TODO]: (state, action) => ({
@@ -25,8 +26,9 @@ export default createReducer(initialState, {
         todos: state.todos.map((item, index) => {
             if (action.payload === index) {
                 return {
-                    todoItem: item.todoItem,
-                    mark: !item.mark
+                    id: item.id,
+                    content: item.content,
+                    status: !item.status
                 }
             }
             return item;
