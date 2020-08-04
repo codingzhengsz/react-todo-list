@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTodoAction } from '../../action'
+import { addTodo } from '../../api'
 
 class Input extends React.Component {
 
@@ -9,7 +10,9 @@ class Input extends React.Component {
             alert('Input content is empty')
             return
         }
-        this.props.addTodoAction(this.input.value)
+        addTodo({ "content": this.input.value, "status": false }).then(response => {
+            this.props.addTodoAction(response.data)
+        })
         this.input.value = "";
     }
 
