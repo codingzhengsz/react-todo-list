@@ -12,8 +12,9 @@ export const todoList = async () => {
 
 
 // PUT: /todos/{id}
-export const updateTodo = async (id) => {
-    return await request(basicUrl + "/" + id, MethodType.PUT)
+export const updateTodo = async (id, body) => {
+    let requestBody = JSON.stringify(body)
+    return await request(basicUrl + "/" + id, MethodType.PUT, requestBody)
 }
 
 // POST: /todos

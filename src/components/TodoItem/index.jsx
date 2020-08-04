@@ -1,4 +1,5 @@
 import React from 'react'
+import {updateTodo} from '../../api'
 
 class TodoItem extends React.Component {
 
@@ -8,6 +9,7 @@ class TodoItem extends React.Component {
 
     onMark = () => {
         this.props.markTodoAction(this.props.id)
+        updateTodo(this.props.item.id, {"status": !this.props.item.status})
     }
 
     render() {
