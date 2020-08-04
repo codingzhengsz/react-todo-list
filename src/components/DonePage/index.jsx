@@ -13,7 +13,7 @@ class DonePage extends React.Component {
                 <h1>Finished Todo</h1>
                 {
                     this.props.todos.map((item, index) => {
-                        if (item.mark) {
+                        if (item.status) {
                             return <TodoItem key={index} id={index}
                                 item={item} 
                                 deleteTodoAction={this.props.deleteTodoAction}

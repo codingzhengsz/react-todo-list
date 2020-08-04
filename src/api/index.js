@@ -20,9 +20,10 @@ export const updateTodo = async (id, body) => {
 // POST: /todos
 export const addTodo = async (body) => {
     let requestBody = JSON.stringify(body)
-    console.log(requestBody)
     return await request(basicUrl, MethodType.POST, requestBody)
 }
 
-
 // DELETE: /todos/{id}
+export const deleteTodo = async (id) => {
+    return await request(basicUrl + "/" + id, MethodType.DELETE)
+}
