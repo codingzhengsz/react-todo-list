@@ -17,11 +17,11 @@ export default createReducer(initialState, {
         todos: [action.payload, ...state.todos]
     }),
     [DELETE_TODO]: (state, action) => ({
-        todos: state.todos.filter((item, index) => action.payload.id !== item.id)
+        todos: state.todos.filter((item, index) => action.payload !== item.id)
     }),
     [MARK_TODO]: (state, action) => ({
         todos: state.todos.map((item, index) => {
-            if (action.payload === index) {
+            if (action.payload === item.id) {
                 return {
                     id: item.id,
                     content: item.content,

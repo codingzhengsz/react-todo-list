@@ -2,24 +2,26 @@ import React from 'react'
 import TodoItem from '../TodoItem'
 import { connect } from 'react-redux'
 import { deleteTodoAction, markTodoAction } from '../../action'
-import Menu from '../Menu'
+import TodoMenu from '../TodoMenu'
+import { List } from 'antd'
 
 
 class DonePage extends React.Component {
     render() {
         return (
             <div>
-                <Menu />
+                <TodoMenu />
                 <h1>Finished Todo</h1>
-                {
-                    this.props.todos.filter((item, index) => item.status).map((item, index) => {
-                        return <TodoItem key={index} id={index}
-                            item={item}
-                            deleteTodoAction={this.props.deleteTodoAction}
-                            markTodoAction={this.props.markTodoAction}
-                        />
-                    })
-                }
+                <List bordered dataSource={this.props.todos.filter((item, index) => item.status)}
+                    style={{ width: '50%', margin: '20px auto' }} renderItem={item => (
+                        <List.Item>
+                            <TodoItem
+                                key={item.id}
+                                deleteTodoAction={this.props.deleteTodoAction}
+                                markTodoAction={this.props.markTodoAction}
+                                item={item} />
+                        </List.Item>)}>
+                </List>
             </div>
         )
     }

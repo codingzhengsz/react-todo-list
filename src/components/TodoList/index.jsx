@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import TodoItem from '../TodoItem';
-import { deleteTodoAction, markTodoAction,addTodoAction,addAllTodoAction } from '../../action'
-import {todoList} from '../../api'
+import { deleteTodoAction, markTodoAction, addTodoAction, addAllTodoAction } from '../../action'
+import { todoList } from '../../api'
+import { List } from 'antd';
 
 class TodoList extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {todos: []}
+        this.state = { todos: [] }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         todoList().then(response => {
             this.props.addAllTodoAction(response.data.reverse())
         })
@@ -18,17 +19,15 @@ class TodoList extends React.Component {
 
     render() {
         return (
-            <div>
-                {
-                    this.props.todos.map((item, index) => <TodoItem
-                        key={index}
-                        id={index}
+            <List bordered dataSource={this.props.todos} style={{ width: '36%', margin: '20px auto' }} renderItem={item => (
+                <List.Item>
+                    <TodoItem
+                        key={item.id}
                         deleteTodoAction={this.props.deleteTodoAction}
                         markTodoAction={this.props.markTodoAction}
-                        value={item}
-                        item={item} />)
-                }
-            </div>
+                        item={item} />
+                </List.Item>)}>
+            </List>
         )
     }
 }

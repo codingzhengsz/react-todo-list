@@ -1,16 +1,16 @@
 import React from 'react'
-import Input from '../Input'
+import TodoInput from '../TodoInput'
 import TodoList from '../TodoList'
-import Menu from '../Menu'
+import TodoMenu from '../TodoMenu'
 
 class TodoPage extends React.Component{
 
     render(){
         return (
             <div>
+                <TodoMenu />
                 <h1>Todo List</h1>
-                <Menu />
-                <Input />
+                <TodoInput />
                 <TodoList />
             </div>
         )
