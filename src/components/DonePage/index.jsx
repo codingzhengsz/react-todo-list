@@ -12,19 +12,9 @@ class DonePage extends React.Component {
             <div>
                 <TodoMenu />
                 <h1>Finished Todo</h1>
-                {/* <List bordered dataSource={this.props.todos.todos.filter((item, index) => item.status)}
-                    style={{ width: '50%', margin: '20px auto' }} renderItem={item => (
-                        <List.Item>
-                            <TodoItem
-                                key={item.id}
-                                deleteTodoAction={this.props.deleteTodoAction}
-                                markTodoAction={this.props.markTodoAction}
-                                item={item} />
-                        </List.Item>)}>
-                </List> */}
-                <Spin spinning={this.props.isLoading.loading}>
+                <Spin spinning={this.props.loading}>
                     <div style={{ margin: '10px 0' }}>
-                        {this.props.todos.todos.filter((item, index) => item.status).map((item, indox) => {
+                        {this.props.todos.filter((item, index) => item.status).map((item, indox) => {
                             return <TodoItem
                                 key={item.id}
                                 deleteTodoAction={this.props.deleteTodoAction}
@@ -40,7 +30,7 @@ class DonePage extends React.Component {
 
 const mapStateToProps = (state) => ({
     todos: state.todos,
-    isLoading: state.isLoading
+    loading: state.loading
 })
 
 const mapDispatchToProps = {
