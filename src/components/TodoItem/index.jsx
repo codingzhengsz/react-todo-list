@@ -4,8 +4,9 @@ import { updateTodo, deleteTodo } from '../../api'
 class TodoItem extends React.Component {
 
     onDelete = () => {
-        this.props.deleteTodoAction(this.props.id)
-        deleteTodo(this.props.item.id)
+        deleteTodo(this.props.item.id).then(response => {
+            this.props.deleteTodoAction(this.props.id)
+        })
     }
 
     onMark = () => {

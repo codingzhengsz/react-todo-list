@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import TodoItem from '../TodoItem';
-import { deleteTodoAction, markTodoAction,addTodoAction } from '../../action'
+import { deleteTodoAction, markTodoAction,addTodoAction,addAllTodoAction } from '../../action'
 import {todoList} from '../../api'
 
 class TodoList extends React.Component {
@@ -12,9 +12,7 @@ class TodoList extends React.Component {
 
     componentWillMount() {
         todoList().then(response => {
-            for (let todo of response.data) {
-                this.props.addTodoAction(todo)
-            }
+            this.props.addAllTodoAction(response.data.reverse())
         })
     }
 
@@ -42,7 +40,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     deleteTodoAction,
     markTodoAction,
-    addTodoAction
+    addTodoAction,
+    addAllTodoAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

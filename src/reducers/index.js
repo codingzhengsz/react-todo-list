@@ -1,7 +1,8 @@
 import {
     ADD_TODO,
     DELETE_TODO,
-    MARK_TODO
+    MARK_TODO,
+    ADD_ALL_TODO
 } from '../action/actionTypes'
 import {
     createReducer
@@ -13,14 +14,10 @@ let initialState = {
 
 export default createReducer(initialState, {
     [ADD_TODO]: (state, action) => ({
-        todos: state.todos.concat({
-            id: action.payload.id,
-            content: action.payload.content,
-            status: action.payload.status
-        })
+        todos: [action.payload, ...state.todos]
     }),
     [DELETE_TODO]: (state, action) => ({
-        todos: state.todos.filter((item, index) => action.payload !== index)
+        todos: state.todos.filter((item, index) => action.payload.id !== item.id)
     }),
     [MARK_TODO]: (state, action) => ({
         todos: state.todos.map((item, index) => {
@@ -33,5 +30,8 @@ export default createReducer(initialState, {
             }
             return item;
         })
+    }),
+    [ADD_ALL_TODO]: (state, action) => ({
+        todos: action.payload
     })
 })

@@ -12,16 +12,13 @@ class DonePage extends React.Component {
                 <Menu />
                 <h1>Finished Todo</h1>
                 {
-                    this.props.todos.map((item, index) => {
-                        if (item.status) {
-                            return <TodoItem key={index} id={index}
-                                item={item} 
-                                deleteTodoAction={this.props.deleteTodoAction}
-                                markTodoAction={this.props.markTodoAction}
-                                />
-                        }
-                        return null
-                    }).filter(item => item != null)
+                    this.props.todos.filter((item, index) => item.status).map((item, index) => {
+                        return <TodoItem key={index} id={index}
+                            item={item}
+                            deleteTodoAction={this.props.deleteTodoAction}
+                            markTodoAction={this.props.markTodoAction}
+                        />
+                    })
                 }
             </div>
         )
@@ -38,4 +35,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(DonePage)
+export default connect(mapStateToProps, mapDispatchToProps)(DonePage)

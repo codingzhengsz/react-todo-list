@@ -19,6 +19,7 @@ export const request = (api, method = MethodType.GET, params = {}, config = {}) 
             ...config.headers
         }
     }
+    // TODO
     return new Promise((resolve, reject) => {
         axios({
                 url: api,
