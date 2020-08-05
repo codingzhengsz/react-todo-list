@@ -1,6 +1,10 @@
-import reducers from '../reducers';
-import {createStore} from 'redux'
+import todos from '../reducers';
+import loading from '../reducers/loading';
+import { configureStore } from '@reduxjs/toolkit';
 
-const store = createStore(reducers)
-
-export default store
+export default configureStore({
+    reducer: {
+        todos: todos, 
+        isLoading: loading
+    }
+})

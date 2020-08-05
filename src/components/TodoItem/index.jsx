@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { updateTodo, deleteTodo } from '../../api'
 import { Button, Row, Col } from 'antd'
 
@@ -21,11 +21,11 @@ class TodoItem extends React.Component {
 
     render() {
         return (
-                <Row style={{width: '38%', height: '40px', margin: '-1px auto',border:'1px solid #CCCCCC'}} justify='center' align='middle'>
-                    <Col span={20}><span style={{ textDecorationLine: this.props.item.status ? "line-through" : "none" }}
-                        onClick={this.onMark}>{this.props.item.content}</span></Col>
-                    <Col span={4}><Button type="primary" onClick={this.onDelete} danger>X</Button></Col>
-                </Row>
+            <Row style={{ width: '38%', height: '40px', margin: '-1px auto', border: '1px solid #CCCCCC' }} justify='center' align='middle'>
+                <Col span={20}><span style={{ textDecorationLine: this.props.item.status ? "line-through" : "none" }}
+                    onClick={this.onMark}>{this.props.item.content}</span></Col>
+                <Col span={4}><Button type="primary" onClick={this.onDelete} danger>X</Button></Col>
+            </Row>
         )
     }
 }

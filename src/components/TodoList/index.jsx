@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import TodoItem from '../TodoItem';
 import { deleteTodoAction, markTodoAction, addTodoAction, addAllTodoAction } from '../../action'
 import { todoList } from '../../api'
-import { List } from 'antd';
+import { Spin } from 'antd';
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -18,6 +18,7 @@ class TodoList extends React.Component {
     }
 
     render() {
+        
         return (
             // <List bordered dataSource={this.props.todos} style={{ width: '36%', margin: '20px auto' }} renderItem={item => (
             //     <List.Item>
@@ -28,8 +29,9 @@ class TodoList extends React.Component {
             //             item={item} />
             //     </List.Item>)}>
             // </List>
+            <Spin spinning={this.props.isLoading.loading}>
             <div style={{ margin: '10px 0' }}>
-                {this.props.todos.map((item, index) => {
+                {this.props.todos.todos.map((item, index) => {
                     return <TodoItem
                         key={item.id}
                         deleteTodoAction={this.props.deleteTodoAction}
@@ -37,12 +39,14 @@ class TodoList extends React.Component {
                         item={item} />
                 })}
             </div>
+            </Spin>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    todos: state.todos
+    todos: state.todos,
+    isLoading: state.isLoading
 })
 
 const mapDispatchToProps = {
