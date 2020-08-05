@@ -19,15 +19,24 @@ class TodoList extends React.Component {
 
     render() {
         return (
-            <List bordered dataSource={this.props.todos} style={{ width: '36%', margin: '20px auto' }} renderItem={item => (
-                <List.Item>
-                    <TodoItem
+            // <List bordered dataSource={this.props.todos} style={{ width: '36%', margin: '20px auto' }} renderItem={item => (
+            //     <List.Item>
+            //         <TodoItem
+            //             key={item.id}
+            //             deleteTodoAction={this.props.deleteTodoAction}
+            //             markTodoAction={this.props.markTodoAction}
+            //             item={item} />
+            //     </List.Item>)}>
+            // </List>
+            <div style={{ margin: '10px 0' }}>
+                {this.props.todos.map((item, index) => {
+                    return <TodoItem
                         key={item.id}
                         deleteTodoAction={this.props.deleteTodoAction}
                         markTodoAction={this.props.markTodoAction}
                         item={item} />
-                </List.Item>)}>
-            </List>
+                })}
+            </div>
         )
     }
 }
