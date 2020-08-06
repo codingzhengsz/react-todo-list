@@ -37,7 +37,6 @@ export const todoList = async () => {
 
 // PUT: /todos/{id}
 export const updateTodo = async (id, body) => {
-    // let requestBody = JSON.stringify(body)
     return await todoApi.put(`/${id}`, body)
 }
 
