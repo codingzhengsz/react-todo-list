@@ -13,9 +13,16 @@ pipeline {
             }
         }
 
+        stage('test') { 
+            steps {
+                bat 'npm test'
+            }
+        }
+
         stage('Deploy') { 
             steps {
-                bat 'npm start' 
+                bat 'npm build' 
+                bat 'xcopy build\\* D:\\deploy\\frontend /e /y'
             }
         }
     }
