@@ -9,7 +9,7 @@ class TodoPage extends React.Component{
         return (
             <div>
                 <TodoMenu />
-                <h1>Todo List</h1>
+                <h1>Todo List Demo</h1>
                 <TodoInput />
                 <TodoList />
             </div>

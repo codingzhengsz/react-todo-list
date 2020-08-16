@@ -21,7 +21,8 @@ pipeline {
 
         stage('Deploy') { 
             steps {
-                bat 'npm run serve' 
+                bat 'npm run-script build' 
+                bat 'xcopy build\\* D:\\deploy\\frontend /e /y'
             }
         }
     }
